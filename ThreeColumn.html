@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Three Column Page Demo</title>
+
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <header class="text-center">
+            <h1>Three Column Page Demo</h1>
+            <button id="toggleLeftBtn" class="btn btn-primary btn-lg">
+                Toggle Left Panel
+            </button>
+            <button id="toggleRightBtn" class="btn btn-primary btn-lg">
+                Toggle Right Panel
+            </button>
+        </header>
+
+        <div id="bodyContentWrapper">
+            <div id="leftPanel" class="text-center">
+                <h1>Left Panel</h1>
+            </div>
+
+            <div id="leftResizeBar" class="resizeBar"></div>
+
+            <!-- the order of element matters, please see the following comments -->
+            <div id="rightPanel" class="text-center">
+                <h1>Right Panel</h1>
+            </div>
+
+            <!-- Due to the float right style, we need to put this after the right panel-->
+            <div id="rightResizeBar" class="resizeBar"></div>
+
+            <!-- the middle panel has to be the last element because 
+                block formatting context (BFC) requires it-->
+            <div id="middlePanel" class="text-center">
+                <h1>Middle Panel</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

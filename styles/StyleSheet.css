@@ -1,0 +1,53 @@
+﻿#bodyContentWrapper {
+    height: 200px;
+    border: 3px solid black;
+    margin-top: 20px;
+    /* this should be bigger than the sume of 
+        min-width of sub elements */
+    min-width: 350px;
+}
+
+    #bodyContentWrapper > div {
+        height: 100%;
+    }
+
+#leftPanel {
+    float: left;
+    width: 30%;
+    background-color: lightblue;
+    min-width: 100px;
+}
+
+#middlePanel {
+    background-color: lightcoral;
+    overflow: hidden;
+    min-width: 100px;
+}
+
+#rightPanel {
+    float: right;
+    width: 30%;
+    background-color: lightgreen;
+    min-width: 100px;
+}
+
+.resizeBar {
+    width: 5px;
+    background-color: darkgrey;
+}
+
+#leftResizeBar {
+    float: left;
+}
+
+    #leftResizeBar:hover {
+        cursor: col-resize;
+    }
+
+#rightResizeBar {
+    float: right;
+}
+
+    #rightResizeBar:hover {
+        cursor: col-resize;
+    }
