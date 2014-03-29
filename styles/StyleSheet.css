@@ -1,10 +1,20 @@
-﻿#bodyContentWrapper {
-    height: 200px;
-    border: 3px solid black;
-    margin-top: 20px;
+﻿#bodyContainer {
+    /* 100% of view port*/ 
+    height: 100vh; 
+
     /* this should be bigger than the sume of 
         min-width of sub elements */
-    min-width: 350px;
+    min-width: 600px; 
+}
+
+#bodyHeader {
+    height: 120px;
+}
+
+#bodyContentWrapper {
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
     #bodyContentWrapper > div {
@@ -13,22 +23,22 @@
 
 #leftPanel {
     float: left;
-    width: 30%;
     background-color: lightblue;
-    min-width: 100px;
+    min-width: 150px;
 }
 
 #middlePanel {
-    background-color: lightcoral;
+    /* setting overflow: hidden and not floating to make 
+        the middle panel "block formatting context" (BFC) */
     overflow: hidden;
-    min-width: 100px;
+    background-color: lightcoral;
+    min-width: 150px;
 }
 
 #rightPanel {
     float: right;
-    width: 30%;
     background-color: lightgreen;
-    min-width: 100px;
+    min-width: 150px;
 }
 
 .resizeBar {
@@ -36,18 +46,14 @@
     background-color: darkgrey;
 }
 
+.resizeBar:hover {
+    cursor: col-resize;
+}
+
 #leftResizeBar {
     float: left;
 }
 
-    #leftResizeBar:hover {
-        cursor: col-resize;
-    }
-
 #rightResizeBar {
     float: right;
 }
-
-    #rightResizeBar:hover {
-        cursor: col-resize;
-    }

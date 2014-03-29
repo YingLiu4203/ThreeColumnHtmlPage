@@ -11,8 +11,8 @@
     <link href="styles/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <header class="text-center">
+    <div id="bodyContainer" class="container-fluid">
+        <div id="bodyHeader" class="text-center">
             <h1>Three Column Page Demo</h1>
             <button id="toggleLeftBtn" class="btn btn-primary btn-lg">
                 Toggle Left Panel
@@ -20,18 +20,17 @@
             <button id="toggleRightBtn" class="btn btn-primary btn-lg">
                 Toggle Right Panel
             </button>
-        </header>
+        </div>
 
         <div id="bodyContentWrapper">
             <div id="leftPanel" class="text-center">
-                <h1>Left Panel</h1>
+                Left Panel
             </div>
-
             <div id="leftResizeBar" class="resizeBar"></div>
 
             <!-- the order of element matters, please see the following comments -->
             <div id="rightPanel" class="text-center">
-                <h1>Right Panel</h1>
+                Right Panel
             </div>
 
             <!-- Due to the float right style, we need to put this after the right panel-->
@@ -40,9 +39,17 @@
             <!-- the middle panel has to be the last element because 
                 block formatting context (BFC) requires it-->
             <div id="middlePanel" class="text-center">
-                <h1>Middle Panel</h1>
+                Middle Panel
             </div>
         </div>
     </div>
+
+    <script src="scripts/jquery-2.1.0.js"></script>
+    <script src="scripts/jquery-ui-1.10.4.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/local/commons.js"></script>
+    <script src="scripts/local/threeColumns.js"></script>
+    <script src="scripts/local/resizeColumns.js"></script>
+    <script src="scripts/local/main.js"></script>
 </body>
 </html>
