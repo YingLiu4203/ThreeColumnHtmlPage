@@ -8,12 +8,14 @@
     var leftPanelInitWidth = "30%";
     var rightPanelInitWidth = "30%";
 
+    // ! it is a surprise that an inside element (h1)
+    // has a margin of 20px that is not included in 
+    // bodyHeader's outerHeight. We use postion's top to get it. 
     var calcBodyHeaderHeight = function () {
         var totalHeight = $bodyHeader.position().top +
             $bodyHeader.outerHeight(true);
         return totalHeight;
     };
-
 
     var setDocHeight = function () {
         // height is the inside height excluding paddings
