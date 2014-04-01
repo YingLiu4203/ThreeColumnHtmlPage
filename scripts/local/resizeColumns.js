@@ -7,8 +7,8 @@ var resizeColumns = (function ($) {
     // to compensate rounding error in calculating drag distance
     var minWidthExtraPixels = 2;
 
-    var $resizeBars = $(".resizeBar");
-    var leftResizeBarId = "leftResizeBar";
+    var $resizeBars = $('.resizeBar');
+    var leftResizeBarId = 'leftResizeBar';
 
     // shared local variables
     // to remember the start offset of resize bar
@@ -104,6 +104,7 @@ var resizeColumns = (function ($) {
         var finalPosition = {};
         calcFinalPosition(ui.offset.left, neighbors, finalPosition);
 
+        // adjust offset before change panel width
         correctReizeBarOffset($resizeBar, finalPosition);
         setFloatingNeighborWidth($resizeBar, neighbors, finalPosition);
         

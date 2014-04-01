@@ -2,9 +2,9 @@
 var commons = (function ($) {
 
     return {
-        $leftPanel: $("#leftPanel"),
-        $middlePanel: $("#middlePanel"),
-        $rightPanel: $("#rightPanel")
+        $leftPanel: $('#leftPanel'),
+        $middlePanel: $('#middlePanel'),
+        $rightPanel: $('#rightPanel')
     };
 
 })(jQuery);
