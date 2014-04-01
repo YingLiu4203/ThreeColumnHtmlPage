@@ -42,8 +42,8 @@
         // we use scrollHeight and clientHeight to check 
         // the presence of a vertical scroll
         if (elements[0].is(':visible')) {
-            var hasVerticalScroll = document.body.scrollHeight
-                > document.body.clientHeight;
+            var hasVerticalScroll = $(document).height()
+                > $(window).height();
             if (hasVerticalScroll) {
                 setDocWidth();
             }
