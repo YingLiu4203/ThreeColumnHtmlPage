@@ -1,39 +1,52 @@
 ﻿var threeColumns = (function ($) {
-    var _commons; 
+    var _commons,       // imported object
+        $bodyContainer = $('#bodyContainer'),
+        $bodyHeader = $('#bodyHeader'),
+        $bodyContentWrapper = $('#bodyContentWrapper'),
 
-    var $bodyContainer = $('#bodyContainer');
-    var $bodyHeader = $('#bodyHeader');
-    var $bodyContentWrapper = $('#bodyContentWrapper');
+        $leftResizeBar = $('#leftResizeBar'),
+        $rightResizeBar = $('#rightResizeBar'),
 
-    var $leftResizeBar = $('#leftResizeBar');
-    var $rightResizeBar = $('#rightResizeBar');
+        $leftToggleBtn = $('#leftToggleBtn'),
+        $rightToggleBtn = $('#rightToggleBtn'),
 
-    var $leftToggleBtn = $('#leftToggleBtn');
-    var $rightToggleBtn = $('#rightToggleBtn');
+        leftPanelInitWidth = "30%",
+        rightPanelInitWidth = "30%",
 
-    var leftPanelInitWidth = "30%";
-    var rightPanelInitWidth = "30%";
+        setDocHeight, setDocWidth, 
+        toggleElements, onWindowResize,
 
-    // ! it is a surprise that an inside element (h1)
-    // has a margin of 20px that is not included in 
-    // bodyHeader's outerHeight. We use postion's top to get it. 
-    var calcBodyHeaderHeight = function () {
-        var totalHeight = $bodyHeader.position().top +
+        initModule, onDocumentReady, exported
+    ;
+
+    setDocHeight = function () {
+        var body_header_height, doc_height;
+        
+        // ! it is a surprise that an inside element (h1)
+        // has a margin of 20px that is not included in 
+        // bodyHeader's outerHeight. We use postion's top to get it. 
+        body_header_height = $bodyHeader.position().top +
             $bodyHeader.outerHeight(true);
-        return totalHeight;
-    };
 
-    var setDocHeight = function () {
         // height is the inside height excluding paddings
-        var docHeight = $bodyContainer.height() -
-            calcBodyHeaderHeight();
+        var doc_height = $bodyContainer.height() - body_header_height;
 
         // the container doesn't have any margin or border
-        $bodyContentWrapper.height(docHeight);
+        $bodyContentWrapper.height(doc_height);
     };
 
+    // during resize, reset to default layout to
+    // make the calculation simple
+    setDocWidth = function () {
+        _commons.$leftPanel.width(leftPanelInitWidth);
+        _commons.$rightPanel.width(rightPanelInitWidth);
+    }
+
+
     // toggle elements  
-    var toggleElements = function (elements) {
+    toggleElements = function (elements) {
+        var has_vertical_scroll;
+
         $.each(elements, function(index, $element) {
             $element.toggle();
         })
@@ -42,32 +55,25 @@
         // we use scrollHeight and clientHeight to check 
         // the presence of a vertical scroll
         if (elements[0].is(':visible')) {
-            var hasVerticalScroll = $(document).height()
+            has_vertical_scroll = $(document).height()
                 > $(window).height();
-            if (hasVerticalScroll) {
+            if (has_vertical_scroll) {
                 setDocWidth();
             }
         }
     };
 
-    // during resize, reset to default layout to
-    // make the calculation simple
-    var setDocWidth = function () {
-        _commons.$leftPanel.width(leftPanelInitWidth);
-        _commons.$rightPanel.width(rightPanelInitWidth);
-    }
-
     // when window resizes, set height and width to initial values
-    var onWindowResize = function () {
+    onWindowResize = function () {
         setDocHeight();
         setDocWidth();
     };
 
-    var initModule = function(commons) {
+    initModule = function(commons) {
         _commons = commons;
     };
 
-    var onDocumentReady = function () {
+    onDocumentReady = function () {
 
         // set column width the first time
         onWindowResize();
@@ -83,7 +89,7 @@
         });
     };
 
-    var exported = {
+    exported = {
         initModule: initModule,
         onDocumentReady: onDocumentReady
     };
